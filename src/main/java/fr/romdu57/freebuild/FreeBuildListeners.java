@@ -12,12 +12,17 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class FreeBuildListeners implements Listener {
 
+    private FreeBuild explodium;
+
+    public FreeBuildListeners(FreeBuild explodium){
+        this.explodium = explodium;
+    }
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         Bukkit.broadcastMessage("§6"+player.getName()+"§r§9 vient de rejoindre le serveur !");
-        Location spawn = new Location(player.getWorld(), 20.507, 7, 0.494, 0f, 0f);
-        player.teleport(spawn);
+        player.teleport(parseStringToLoc(this.explodium.getConfig().getString("world")));
     }
 
     @EventHandler
@@ -26,15 +31,15 @@ public class FreeBuildListeners implements Listener {
         Bukkit.broadcastMessage("§6"+player.getName()+"§r§9 vient de quitter le serveur !");
     }
 
-    @EventHandler
-    public void onChat(AsyncPlayerChatEvent e) {
-        e.setCancelled(true);
-        Player player = e.getPlayer();
-        if(player.hasPermission("staffchat")) {
-            Bukkit.broadcastMessage("<§l§4Staff "+player.getName()+"§r> "+ e.getMessage());
-        }else {
-            Bukkit.broadcastMessage("<"+player.getName()+"> "+ e.getMessage());
-        }
+    public Location parseStringToLoc(String string) {
+        String[] parsedLoc = string.split(", ");
+        double x = Double.valueOf(parsedLoc[0]);
+        double y = Double.valueOf(parsedLoc[1]);
+        double z = Double.valueOf(parsedLoc[2]);
+        String world = parsedLoc[3];
+        float yaw = Float.valueOf(parsedLoc[4]);
+        float pitch = Float.valueOf(parsedLoc[5]);
+        return new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
     }
 
 }

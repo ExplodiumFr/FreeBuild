@@ -8,9 +8,10 @@ public class FreeBuild extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         System.out.println("[FreeBuild-Explo] Plugin activer !");
-        getCommand("spawn").setExecutor(new CommandSpawn());
-        getServer().getPluginManager().registerEvents(new FreeBuildListeners(), this);
+        getCommand("spawn").setExecutor(new CommandSpawn(this));
+        this.getServer().getPluginManager().registerEvents(new FreeBuildListeners(this), this);
 
     }
 
