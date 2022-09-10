@@ -1,5 +1,6 @@
-package fr.romdu57.freebuild;
+package fr.thetimedev.freebuild.Listener;
 
+import fr.thetimedev.freebuild.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,15 +16,14 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 
 public class FreeBuildListeners implements Listener {
 
-    private FreeBuild explodium;
+    private Main explodium;
 
-    public FreeBuildListeners(FreeBuild explodium){
+    public FreeBuildListeners(Main explodium){
         this.explodium = explodium;
     }
 

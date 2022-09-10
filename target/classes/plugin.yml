@@ -1,7 +1,0 @@
-name: FreeBuild-Explo
-version: 1.0
-author: Romdu57
-main: fr.romdu57.freebuild.FreeBuild
-commands:
-  spawn:
-    description: Commande de spawn

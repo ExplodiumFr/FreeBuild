@@ -1,7 +1,14 @@
 name: FreeBuild-Explo
-version: 1.0
-author: Romdu57
-main: fr.romdu57.freebuild.FreeBuild
+version: 2.0
+author: TheTimeDev_
+api-version: 1.13
+main: fr.thetimedev.freebuild.Main
 commands:
   spawn:
     description: Commande de spawn
+  menu:
+    description: Commande de test
+  setspawn:
+    description: Commande pour set la position du spawn
+  freebuild-reload:
+    description: Commande de reload de la config
